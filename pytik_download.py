@@ -144,30 +144,3 @@ def pytik_download_by_username(username: str) -> None:
         print(f"[Status] {response['msg']}")
 
     print(f"\n[PYTIK] Run Complete")
-
-def test(video_id) -> None:
-    load_dotenv()
-
-    url = os.environ.get("RAPIDAPI_VIDEO_URL")
-    host = os.environ.get("RAPIDAPI_HOST")
-    
-    api_keys = [
-        os.environ.get("RAPIDAPI_KEY_1"),
-        os.environ.get("RAPIDAPI_KEY_2"),
-        os.environ.get("RAPIDAPI_KEY_3")
-    ]
-    
-    api_key = random.choice(api_keys)
-
-    headers = {
-        "X-RapidAPI-Key": api_key,
-        "X-RapidAPI-Host": host
-    }
-
-    params = {
-        "url": video_id
-    }
-
-    response = requests.get(url, headers=headers, params=params).json()
-    with open("result.json", 'w') as json_file:
-        json.dump(response, json_file)
